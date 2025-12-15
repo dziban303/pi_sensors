@@ -1,6 +1,7 @@
 services:
   sensor-exporter:
-    build: .
+    #build: .
+    image: ghcr.io/dziban303/bmp180-exporter:latest
     container_name: pi_sensors
     hostname: pi_sensors
     restart: unless-stopped
