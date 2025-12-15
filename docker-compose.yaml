@@ -1,0 +1,17 @@
+services:
+  sensor-exporter:
+    build: .
+    container_name: pi_sensors
+    hostname: pi_sensors
+    restart: unless-stopped
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    volumes:
+      - /sys/class/thermal/thermal_zone0/temp:/sys/class/thermal/thermal_zone0/temp:ro
+    ports:
+      - "8000:8000"
+    environment:
+      - MQTT_BROKER=192.168.0.175
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=dzicave/pi3_BMP180
+      - UPDATE_INTERVAL=15
