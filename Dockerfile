@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 
-RUN apt-get update && apt-get install -y i2c-tools && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y i2c-tools --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
